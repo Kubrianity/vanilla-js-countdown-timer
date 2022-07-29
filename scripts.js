@@ -4,10 +4,14 @@ const endTime = document.querySelector('.display__end-time');
 const buttons = document.querySelectorAll('[data-time]');
 
 function timer(seconds) {
+    //clear any existing timers
+    clearInterval(countdown);
+
     const now = Date.now();
     const then = now + seconds * 1000;
     displayEndTime(then);
     displayTimeLeft(seconds);
+    
     countdown = setInterval(() => {
         const secondsLeft = Math.round((then - Date.now()) / 1000);
         //check if we should stop it
